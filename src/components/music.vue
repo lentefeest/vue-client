@@ -2,9 +2,9 @@
   <div class="music">
     <v-row justify="center">
       <v-expansion-panels popout>
-        <v-expansion-panel v-for="(item,i) in 5" :key="i">
-          <v-expansion-panel-header>Item</v-expansion-panel-header>
-          <v-expansion-panel-content>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</v-expansion-panel-content>
+        <v-expansion-panel v-for="(year ,i) in songs" :key="i">
+          <v-expansion-panel-header>{{i}}</v-expansion-panel-header>
+          <v-expansion-panel-content v-for="(song, j) in year" :key="j">{{song.title}}</v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
     </v-row>
@@ -12,8 +12,15 @@
 </template>
 
 <script>
+import songs from "./music/songs.json";
+
 export default {
-  name: "music"
+  name: "music",
+  data() {
+    return {
+      songs: songs
+    };
+  }
 };
 </script>
 
